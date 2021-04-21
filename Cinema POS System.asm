@@ -10,82 +10,62 @@ ExitProcess PROTO, dwExitCode: DWORD
 ;---------------------------- Data Segment ----------------------------;
 .data
 
-;-------------------Login section-----------------------
-	banner	BYTE	 42 DUP("_"), 0dh, 0ah,
-					"|                                        |", 0dh, 0ah,
-					"|               Welcome to               |", 0dh, 0ah,
-					"|             Hao Kan Cinema             |", 0dh, 0ah,
-					"|          Ticket Buying System          |", 0dh, 0ah,
-					"|",40 DUP("_") , "|", 0dh, 0ah, 0dh, 0ah,
-					"Please choose a number to proceed.", 0dh, 0ah,
-					"1. Login", 0dh, 0ah,
-					"2. Sign Up", 0dh, 0ah,
-					"3. Continue as guest", 0dh, 0ah, 0dh, 0ah, 0
+;------------------------Login section-----------------------
+	banner			BYTE		 42 DUP("_"), 0dh, 0ah,
+								"|                                        |", 0dh, 0ah,
+								"|               Welcome to               |", 0dh, 0ah,
+								"|             Hao Kan Cinema             |", 0dh, 0ah,
+								"|          Ticket Buying System          |", 0dh, 0ah,
+								"|",40 DUP("_") , "|", 0dh, 0ah, 0dh, 0ah,
+								"Please choose a number to proceed.", 0dh, 0ah,
+								"1. Login", 0dh, 0ah,
+								"2. Sign Up", 0dh, 0ah,
+								"3. Continue as guest", 0dh, 0ah, 0dh, 0ah, 0
+	inputmenu		BYTE		"Enter your choice: ", 0
+	errormsg1		BYTE		"Invalid input, choose number 1, 2 or 3 only.", 0dh, 0ah, 0
+	login			BYTE		30 DUP("*"), 0dh, 0ah,
+								"!         Login Page         !", 0dh, 0ah,
+								30 DUP("*"), 0dh, 0ah, 0dh, 0ah,
+								"Please enter username and password.", 0dh, 0ah, 0
+	inputusername	BYTE		"Username: ", 0
+	inputpassword	BYTE		"Password: ", 0
+	usernameinput	BYTE		30 DUP(?)
+	passwordinput	BYTE		30 DUP(?)
+	loginsuccess	BYTE		"Login successfully.", 0dh, 0ah, 0
+	loginfail		BYTE		"Login failed, invalid username or password. Do you want to continue to login? (y/n)", 0dh, 0ah, 0
+	actionerror		BYTE		"Please choose 'y' and 'n' only. Do you want to continue to login? (y/n)", 0dh, 0ah, 0
+	membership		BYTE		30h
 
-	inputmenu	BYTE	"Enter your choice: ", 0
-	
-	errormsg1	BYTE	"Invalid input, choose number 1, 2 or 3 only.", 0dh, 0ah, 0
 
-	login		BYTE	30 DUP("*"), 0dh, 0ah,
-						"!         Login Page         !", 0dh, 0ah,
-						30 DUP("*"), 0dh, 0ah, 0dh, 0ah,
-						"Please enter username and password.", 0dh, 0ah, 0
-
-	inputusername	BYTE	"Username: ", 0
-	inputpassword	BYTE	"Password: ", 0
-
-	usernameinput	BYTE	30 DUP(?)
-	passwordinput	BYTE	30 DUP(?)
-
-	loginsuccess	BYTE	"Login successfully.", 0dh, 0ah, 0
-
-	loginfail	BYTE	"Login failed, invalid username or password. Do you want to continue to login? (y/n)", 0dh, 0ah, 0
-
-	actionerror	BYTE	"Please choose 'y' and 'n' only. Do you want to continue to login? (y/n)", 0dh, 0ah, 0
-
-	membership	BYTE	30h
-
-;--------------------Sign up section------------------------
-	signuptime	BYTE	0
-
-	signup		BYTE	31 DUP("*"), 0dh, 0ah,
-						"!          Signup Page        !", 0dh, 0ah,
-						31 DUP("*"), 0dh, 0ah, 0dh, 0ah,
-						"Welcome to sign up page.", 0dh, 0ah, 0
-
-	signupinput	BYTE	0dh, 0ah, "Please enter your information.", 0dh, 0ah, 0
-
-	inputname	BYTE	"Name: ", 0
-	inputage	BYTE	"Age: ", 0
-	inputemail	BYTE	"Email: ", 0
-	inputphone	BYTE	"Phone Number: ", 0
-
-	nameinput	BYTE	30 DUP(?)
-	ageinput	BYTE	?
-	emailinput	BYTE	30 DUP(?)
-	phoneinput	BYTE	30 DUP(?)
-
-	errormsg2	BYTE	"Invalid input, age should a number be greater than 0 and less than 129.", 0dh, 0ah, 0
-
-	errormsg3	BYTE	"Empty input is invalid, please try again.", 0dh, 0ah, 0
-
-	errormsg4	BYTE	"Invalid inputs, please enter numbers only ('-' is not allowed).", 0dh, 0ah, 0
-
+;------------------------Sign up section------------------------
+	signuptime		BYTE		0
+	signup			BYTE		31 DUP("*"), 0dh, 0ah,
+								"!          Signup Page        !", 0dh, 0ah,
+								31 DUP("*"), 0dh, 0ah, 0dh, 0ah,
+								"Welcome to sign up page.", 0dh, 0ah, 0
+	signupinput		BYTE		0dh, 0ah, "Please enter your information.", 0dh, 0ah, 0
+	inputname		BYTE		"Name: ", 0
+	inputage		BYTE		"Age: ", 0
+	inputemail		BYTE		"Email: ", 0
+	inputphone		BYTE		"Phone Number: ", 0
+	nameinput		BYTE		30 DUP(?)
+	ageinput		BYTE		?
+	emailinput		BYTE		30 DUP(?)
+	phoneinput		BYTE		30 DUP(?)
+	errormsg2		BYTE		"Invalid input, age should a number be greater than 0 and less than 129.", 0dh, 0ah, 0
+	errormsg3		BYTE		"Empty input is invalid, please try again.", 0dh, 0ah, 0
+	errormsg4		BYTE		"Invalid inputs, please enter numbers only ('-' is not allowed).", 0dh, 0ah, 0
 	usernamepassword	BYTE	"Please create a username and password.", 0dh, 0ah, 0
+	username		BYTE		30 DUP(?)
+	password		BYTE		30 DUP(?)
+	adminusername	BYTE		"Admin", 0
+	adminpassword	BYTE		"12345", 0
+	signupsuccess	BYTE		0dh, 0ah, "The sign up is successful.", 0dh, 0ah, 0
+	signupalready	BYTE		0dh, 0ah, "You've already signed up.", 0dh, 0ah, 0
 
-	username	BYTE	30 DUP(?)
-	password	BYTE	30 DUP(?)
-
-	adminusername	BYTE	"Admin", 0
-	adminpassword	BYTE	"12345", 0
-
-	signupsuccess	BYTE	0dh, 0ah, "The sign up is successful.", 0dh, 0ah, 0
-
-	signupalready	BYTE	0dh, 0ah, "You've already signed up.", 0dh, 0ah, 0
 
 ;-----------Movie selection section------------
 	inputmov		byte		?
-
 	movlist			byte		30 dup ("-"), 0dh, 0ah,
 								"  MOVIE LIST", 0dh, 0ah, 0dh, 0ah, 
 								"  1. Wonder Woman 1984", 0dh, 0ah, 
@@ -94,17 +74,13 @@ ExitProcess PROTO, dwExitCode: DWORD
 								"  4. Jumanji: The Next Level", 0dh, 0ah, 
 								"  5. The Lion King", 0dh, 0ah, 
 								30 dup ("-"), 0dh, 0ah, 0dh, 0ah
-
-	prompt1			byte		 "Please Choose your movie selection (1-5): ", 0
-
+	prompt1			byte		"Please Choose your movie selection (1-5): ", 0
 	mov1			byte		0ah, 0dh, "Your movie selection is ", "Wonder Woman 1984", 0dh, 0ah, 0 
 	mov2			byte		0ah, 0dh, "Your movie selection is ", "Avengers: Endgame",	0dh, 0ah, 0
 	mov3			byte		0ah, 0dh, "Your movie selection is ", "Parasite", 0dh, 0ah, 0
 	mov4			byte		0ah, 0dh, "Your movie selection is ", "Jumanji: The Next Level", 0dh, 0ah, 0
 	mov5			byte		0ah, 0dh, "Your movie selection is ", "The Lion King", 0dh, 0ah, 0dh, 0ah, 0
-
 	choosemovie		byte		?
-
 	prompt2			byte		0dh, 0ah, "ERROR!",
 								"Please reselect your movie. (1-5) : ", 0
 
@@ -113,33 +89,22 @@ ExitProcess PROTO, dwExitCode: DWORD
 	inputseat		byte		0
 	inputyn			byte		?
 	inputseatamt	byte		?
-
 	amountticket	dword		?
-
-
 	screen			byte		0dh, 0ah, 26 dup ("_"), 0dh, 0ah,
 								10 dup (" "), "SCREEN", 10 dup (" "), 0ah,
 								26 dup ("_"), 0dh, 0ah, 0dh, 0ah,
-
 	seatrowa		byte		"10 ", "11 ", "12 ", "13 ", "14 ", "15 ", "16 ", "17 ", "18 ", "19 ", 0dh, 0ah,
 								"20 ", "21 ", "22 ", "23 ", "24 ", "25 ", "26 ", "27 ", "28 ", "29 ", 0dh, 0ah,
 								"30 ", "31 ", "32 ", "33 ", "34 ", "35 ", "36 ", "37 ", "38 ", "39 ", 0dh, 0ah,
-	
 	seatrowd		byte		"40 ", "41 ", "42 ", "43 ", "44 ", "45 ", "46 ", "47 ", "48 ", "49 ", 0dh, 0ah,
 								"50 ", "51 ", "52 ", "53 ", "54 ", "55 ", "56 ", "57 ", "58 ", "59 ", 0dh, 0ah, 0dh, 0ah, 0
-
 	prompt3			byte		"Kindly choose your seat selection : ", 0
-
 	prompt4			byte		0dh, 0ah, 0dh, 0ah, "Do you confirm with your selection? (y/n): ", 0
-
 	prompt5			byte		0dh, 0ah, 0dh, 0ah, "ERROR! Kindly reselect your seat: ", 0
-	
 	prompt8			byte		0dh, 0ah, 0dh, 0ah, "How many ticket do you want to buy? ", 0
-
 	prompt9			byte		0dh, 0ah, 0dh, 0ah,"ERROR!! Kindly choose number from  1 to 3. ", 0
 
 ;-----------Calculation Section------------
-
 	ticketprice		word		960
 	totaltp			word		0
 	ticketpricerm	byte		?
@@ -158,16 +123,16 @@ ExitProcess PROTO, dwExitCode: DWORD
 ;------------prompt user to buy snacks section------------
 	inputyn3		byte		?
 	snacknochoose	byte		30h
-	sprompt1			byte		0dh, 0ah, "Do you want to buy some snacks? (y/n): ", 0
-	sprompt2			byte		0dh, 0ah, 0ah, 0dh, "ERROR! Kindly reselect the correct character (y/n): "
+	sprompt1		byte		0dh, 0ah, "Do you want to buy some snacks? (y/n): ", 0
+	sprompt2		byte		0dh, 0ah, 0ah, 0dh, "ERROR! Kindly reselect the correct character (y/n): "
+
 
 ;------------prompt user choose food or drinks section-------------
 	
-	sprompt3			byte		0dh, 0ah, "ERROR!!, Kindly choose again." ,0ah, 0dh,
+	sprompt3		byte		0dh, 0ah, "ERROR!!, Kindly choose again." ,0ah, 0dh,
 
 ;-----------------Food menu section--------------
 	foodinput		byte		?
-
 	foodlist		byte		0dh, 0ah,
 								"  ", 38 dup ("-"), 0dh, 0ah,
 								" |", "  1. Caramel Popcorn		RM 5.00", " |", 0dh, 0ah,
@@ -177,20 +142,16 @@ ExitProcess PROTO, dwExitCode: DWORD
 								" |", "  5. Beef Wrap		RM 5.50", " |", 0dh, 0ah,
 								"  ", 38 dup ("-"), 0dh, 0ah, 0dh, 0ah,
 								"Kindly choose your food selection (1-5): ",  0
-
 	food1			byte		0ah, 0dh, "Your food selection is ", "Caramel Popcorn", 0dh, 0ah, 0
 	food2			byte		0ah, 0dh, "Your food selection is ", "Corn Dog", 0dh, 0ah, 0
 	food3			byte		0ah, 0dh, "Your food selection is ", "Cheesy Wedges", 0dh, 0ah, 0
 	food4			byte		0ah, 0dh, "Your food selection is ", "Chicken Wraps", 0dh, 0ah, 0
 	food5			byte		0ah, 0dh, "Your food selection is ", "Beef Wraps", 0dh, 0ah, 0
-
 	choosefood		byte		0
-
 	sprompt4			byte		0dh, 0ah, "Do you want to proceed with this selection? (y/n):  ", 0
 
 ;--------------Drink menu section------------
 	drinkinput		byte		?
-
 	drinklist		byte		0dh, 0ah,
 								"  ", 38 dup ("-"), 0dh, 0ah,
 								" |", "  1. Coca-Cola		RM 3.00"," |", 0dh, 0ah,
@@ -200,13 +161,11 @@ ExitProcess PROTO, dwExitCode: DWORD
 								" |", "  5. Heaven & Earth		RM 4.00", " |", 0dh, 0ah, 
 								"  ", 38 dup ("-"), 0dh, 0ah, 0dh, 0ah,
 								"Kindly choose your drink selection (1-5): ", 0
-	
 	drink1			byte		0dh, 0ah, "Your drink selection is ", "Coca-Cola", 0dh, 0ah, 0
 	drink2			byte		0dh, 0ah, "Your drink selection is ", "Pepsi", 0dh, 0ah, 0
 	drink3			byte		0dh, 0ah, "Your drink selection is ", "Sprite", 0dh, 0ah, 0
 	drink4			byte		0dh, 0ah, "Your drink selection is ", "100 Plus", 0dh, 0ah, 0
 	drink5			byte		0dh, 0ah, "Your drink selection is ", "Heaven & Earth", 0dh, 0ah, 0
-
 	choosedrink		byte		0
 
 
@@ -216,69 +175,49 @@ ExitProcess PROTO, dwExitCode: DWORD
 	food3price		word		600
 	food4price		word		550
 	food5price		word		550
-
 	drink1price		word		300
 	drink2price		word		300
 	drink3price		word		250
 	drink4price		word		200
 	drink5price		word		400
-
-
 	totalsp			word		0
 	snackpricerm	byte		0
 	snackpricesen	byte		0
 
-
-;----------- Display the summary section-----------
+	;----------- Display the summary section-----------
 	foodname		byte		"Food: ", 0
 	drinkname		byte		"Drink: ", 0
 	snackprice		byte		"Total Snack Price: RM ", 0
 
 ;-----------------Billing section------------------------
-	tax_rate	WORD	1 ; tax_rate = 0.10, will divide by 10 after multiple with tax_rate
+	tax_rate		WORD		1 ; tax_rate = 0.10, will divide by 10 after multiple with tax_rate
+	billbanner		BYTE		44 DUP("_"), 0dh, 0ah,
+								"|                                          |", 0dh, 0ah,
+								"|              Billing Module              |", 0dh, 0ah,
+								"|", 42 DUP("_") , "|", 0dh, 0ah, 0
 
-	billbanner	BYTE	44 DUP("_"), 0dh, 0ah,
-						"|                                          |", 0dh, 0ah,
-						"|              Billing Module              |", 0dh, 0ah,
-						"|", 42 DUP("_") , "|", 0dh, 0ah, 0
-
-	moviechosen	BYTE	"Movie chosen", 0dh, 0ah,
-						"------------", 0dh, 0ah, 0
-
-	seatchosen	BYTE	"Seat number chosen", 0dh, 0ah,
-						"------------------", 0dh, 0ah, 0
-
-	snackchosen	BYTE	"Snack chosen", 0dh, 0ah,
-						"------------", 0dh, 0ah, 0
-
-	nosnack		BYTE	"No snack is chosen", 0dh, 0ah, 0
-
-	ten			WORD	10
-
-	discount_rate	WORD	0
-
-	total_price	WORD	0
-
-	discount	WORD	0
-
-	total_price2	WORD	0
-
-	tax			WORD	0
-
-	grandtotal	WORD	0
-	grandtotalrm	BYTE	?
-	grandtotalsen	BYTE	?
-
+	moviechosen		BYTE		"Movie chosen", 0dh, 0ah,
+								"------------", 0dh, 0ah, 0
+	seatchosen		BYTE		"Seat number chosen", 0dh, 0ah,
+								"------------------", 0dh, 0ah, 0
+	snackchosen		BYTE		"Snack chosen", 0dh, 0ah,
+								"------------", 0dh, 0ah, 0
+	nosnack			BYTE		"No snack is chosen", 0dh, 0ah, 0
+	ten				WORD		10
+	discount_rate	WORD		0
+	total_price		WORD		0
+	discount		WORD		0
+	total_price2	WORD		0
+	tax				WORD		0
+	grandtotal		WORD		0
+	grandtotalrm	BYTE		?
+	grandtotalsen	BYTE		?
 	displaygrandtotal	BYTE	30 DUP("*"), 0dh, 0ah,
 								"Grand Total Price: RM ", 0
-
-	confirmpurchase		BYTE	"Do you confirm your purchase? (y/n) ", 0
-
-	actionyes			BYTE	"Payment is successful, thank you for your purchase.", 0dh, 0ah, 0
-
-	continue			BYTE	"Do you want to continue using Ticketing System? (y/n) ", 0
-
-	actionerroryn			BYTE	"Invalid input, please choose 'y' or 'n' only.", 0dh, 0ah, 0
+	confirmpurchase	BYTE		"Do you confirm your purchase? (y/n) ", 0
+	actionyes		BYTE		"Payment is successful, thank you for your purchase.", 0dh, 0ah, 0
+	continue		BYTE		"Do you want to continue using Ticketing System? (y/n) ", 0
+	actionerroryn	BYTE		"Invalid input, please choose 'y' or 'n' only.", 0dh, 0ah, 0
 
 ;---------------------------- Code Segment ----------------------------;
 .code
