@@ -58,10 +58,10 @@ ExitProcess PROTO, dwExitCode: DWORD
 	usernamepassword	BYTE	"Please create a username and password.", 0dh, 0ah, 0
 	username		BYTE		30 DUP(?)
 	password		BYTE		30 DUP(?)
-	adminusername	BYTE		"Admin", 0
-	adminpassword	BYTE		"12345", 0
-	signupsuccess	BYTE		0dh, 0ah, "The sign up is successful.", 0dh, 0ah, 0
-	signupalready	BYTE		0dh, 0ah, "You've already signed up.", 0dh, 0ah, 0
+	adminusername		BYTE		"Admin", 0
+	adminpassword		BYTE		"12345", 0
+	signupsuccess		BYTE		0dh, 0ah, "The sign up is successful.", 0dh, 0ah, 0
+	signupalready		BYTE		0dh, 0ah, "You've already signed up.", 0dh, 0ah, 0
 
 
 ;-----------Movie selection section------------
