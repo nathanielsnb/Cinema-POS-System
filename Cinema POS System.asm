@@ -6,7 +6,6 @@ INCLUDE Irvine32.inc
 
 ExitProcess PROTO, dwExitCode: DWORD
 
-
 ;---------------------------- Data Segment ----------------------------;
 .data
 
