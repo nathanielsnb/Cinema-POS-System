@@ -8,7 +8,6 @@ ExitProcess PROTO, dwExitCode: DWORD
 
 ;---------------------------- Data Segment ----------------------------;
 .data
-
 ;------------------------Login section-----------------------
 	banner			BYTE		 42 DUP("_"), 0dh, 0ah,
 								"|                                        |", 0dh, 0ah,
